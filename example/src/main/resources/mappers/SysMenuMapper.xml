@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.core.common.dao.SysMenuMapper" >
+  <sql id="cloum1">
+		m.id id, label, icon, page, hidden, parent_id parentId,sort
+	</sql>
+	<sql id="cloum2">
+		user_id userId,role_id roleId, user_name userName, pwd, title , phone_number phoneNumber, valid
+	</sql>
+  <!--通过id获取菜单  -->
+	<select id="getAllMenuByRoleId" parameterType="java.lang.Integer" resultType="com.alibaba.fastjson.JSONObject">
+		SELECT
+		<include refid="cloum1"></include>
+		FROM
+		sys_role_menu rm
+		LEFT JOIN sys_menu m ON rm.id = m.id
+		WHERE
+		rm.role_id = #{roleId,jdbcType=INTEGER}
+		ORDER BY sort
+	</select>
+	<!-- 查询全部菜单 -->
+	<select id="getAllMenu" resultType="com.alibaba.fastjson.JSONObject">
+		SELECT
+		<include refid="cloum1"></include>
+		FROM sys_menu m
+		ORDER BY sort
+	</select>
+	<!--新增一条菜单 -->
+	<insert id="addMenu" parameterType="com.example.core.common.entity.SysMenu" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		insert into sys_menu (id, label,icon,page, hidden, parent_id,sort)
+		values (
+		#{id,jdbcType=INTEGER},
+		#{label,jdbcType=VARCHAR},
+		#{icon,jdbcType=VARCHAR},
+		#{page,jdbcType=VARCHAR},
+		#{hidden,jdbcType=TINYINT},
+		#{parentId,jdbcType=INTEGER},
+		#{sort,jdbcType=INTEGER}
+		)
+	</insert>
+	<!--数据库级联删除  -->
+	<delete id="deleteByMenuId" parameterType="java.lang.Integer">
+		delete from sys_menu
+		where id = #{menuId,jdbcType=INTEGER}
+	</delete>
+	<!--更新一条菜单  -->
+	<update id="update" parameterType="com.example.core.common.entity.SysMenu">
+		update sys_menu
+		<set>
+			<if test="label!=null">
+				label = #{label,jdbcType=VARCHAR},
+			</if>
+			<if test="icon!=null">
+				icon = #{icon,jdbcType=VARCHAR},
+			</if>
+			<if test="page!=null">
+				page = #{page,jdbcType=VARCHAR},
+			</if>
+			<if test="hidden!=null">
+				hidden = #{hidden,jdbcType=TINYINT},
+			</if>
+			<if test="parentId!=null">
+				parent_id = #{parentId,jdbcType=INTEGER},
+			</if>
+			<if test="sort!=null">
+				sort = #{sort,jdbcType=INTEGER}
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<!--通过id获取菜单  -->
+	<select id="query" parameterType="java.lang.Integer" resultType="com.alibaba.fastjson.JSONObject">
+		SELECT
+		<include refid="cloum1"></include>
+		FROM
+		sys_menu m
+		WHERE
+		m.id = #{id,jdbcType=INTEGER}
+	</select>
+	<!--删除菜单表  -->
+	<delete id="delete">
+		delete from sys_menu
+	</delete>
+	<!-- 插入角色菜单表  -->
+	<insert id="insertRoleList">
+		insert into sys_role_menu
+		(role_id, id)
+		values
+		<foreach collection="list" item="SysMenu" separator=",">
+			(#{roleId,jdbcType=INTEGER},#{SysMenu.id,jdbcType=INTEGER})
+		</foreach>
+	</insert>
+	<!-- 插入菜单表 -->
+	<insert id="insertList">
+		insert into sys_menu (id, label, icon,
+		page, hidden, parent_id
+		)
+		values
+		<foreach collection="list" item="SysMenu" separator=",">
+			(#{SysMenu.id,jdbcType=INTEGER}, #{SysMenu.label,jdbcType=VARCHAR}, #{SysMenu.icon,jdbcType=VARCHAR},
+			#{SysMenu.page,jdbcType=VARCHAR}, #{SysMenu.hidden,jdbcType=TINYINT}, #{SysMenu.parentId,jdbcType=INTEGER}
+			)
+		</foreach>
+	</insert>
+</mapper>

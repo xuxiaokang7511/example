@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.core.common.dao.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.example.core.common.entity.SysUser">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="valid" jdbcType="BIT" property="valid" />
+    <result column="user_type" jdbcType="INTEGER" property="userType" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+	
+	<sql id="cloum1">
+		u.user_id userId, u.role_id roleId, u.user_name userName, pwd, title, u.phone_number phoneNumber, u.valid, u.user_type userType, unit,u.id_card idCard, u.create_time createTime, u.update_time updateTime
+	</sql>
+	<sql id="cloum2">
+		u.user_id userId, u.role_id roleId, u.user_name userName, pwd, title, u.phone_number phoneNumber, valid, u.user_type userType, unit,
+		u.id_card idCard,r.role_name roleName,r.role_status roleStatus,u.create_time createTime, u.update_time updateTime
+	</sql>
+  <!--用过用户名查询密码 -->
+	<select id="findByUsername" parameterType="java.lang.String" resultType="com.alibaba.fastjson.JSONObject">
+		SELECT
+		<include refid="cloum2" />
+		FROM
+		sys_user u
+		LEFT JOIN sys_role r ON u.role_id = r.role_id
+		where
+		u.user_name = #{userName,jdbcType=VARCHAR}
+		and u.valid=1
+	</select>
+  <!--添加用户  -->
+	<insert id="addUser" keyColumn="user_id" keyProperty="userId" parameterType="com.example.core.common.entity.SysUser" useGeneratedKeys="true">
+    insert into sys_user (user_id, role_id, user_name, 
+      pwd, title, phone_number, 
+      valid, user_type, unit, 
+      id_card, create_time, update_time
+      )
+    values (#{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{valid,jdbcType=BIT}, #{userType,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, 
+      #{idCard,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+	</insert>
+  <!--用户id查询  -->
+	<select id="query" parameterType="java.lang.Integer" resultType="com.alibaba.fastjson.JSONObject">
+		select
+		<include refid="cloum1" />
+		from sys_user u
+		where u.user_id = #{userId,jdbcType=INTEGER}
+	</select>
+  <!--用户id删除  -->
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from sys_user
+		where user_id = #{userId,jdbcType=INTEGER}
+	</delete>
+  <!--用户更新  -->
+	<update id="update" parameterType="com.example.core.common.entity.SysUser">
+		update sys_user
+		<set>
+			<if test="roleId!=null">
+				role_id = #{roleId,jdbcType=INTEGER},
+			</if>
+			<if test="userName!=null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="pwd!=null">
+				pwd = #{pwd,jdbcType=VARCHAR},
+			</if>
+			<if test="title!=null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneNumber!=null">
+				phone_number = #{phoneNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="valid!=null">
+				valid = #{valid,jdbcType=TINYINT},
+			</if>
+			<if test="userType!=null">
+				user_type = #{userType,jdbcType=INTEGER},
+			</if>
+			<if test="unit!=null">
+				unit = #{unit,jdbcType=VARCHAR},
+			</if>
+			<if test="idCard!=null">
+				id_card = #{idCard,jdbcType=VARCHAR}
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=INTEGER}
+	</update>
+  <!-- 用户查询 -->
+	<select id="find" resultType="com.alibaba.fastjson.JSONObject">
+		select
+		<include refid="cloum1" />
+		from sys_user u
+		WHERE user_type = #{userType,jdbcType=INTEGER}
+	</select>
+
+
+</mapper>

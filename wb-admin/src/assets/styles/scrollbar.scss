@@ -1,0 +1,44 @@
+/*************ie滚动条样式*************/
+* {
+  /*立体滚动条的颜色（包括箭头部分的背景色）*/
+  scrollbar-face-color: #f6f6f6;
+  /*滚动条的高亮颜色（左阴影？）*/
+  scrollbar-highlight-color: #ffffff;
+  /*立体滚动条阴影的颜色*/
+  scrollbar-shadow-color: #ffffff;
+  /*三角箭头的颜色*/
+  scrollbar-arrow-color: #ffffff;
+  /*滚动条的基色*/
+  scrollbar-base-color: #ffffff;
+  /*立体滚动条亮边的颜色*/
+  scrollbar-3dlight-color: #ffffff;
+  /*立体滚动条外阴影的颜色*/
+  scrollbar-darkshadow-color: #ffffff;
+  /*立体滚动条背景颜色*/
+  scrollbar-track-color: #ffffff;
+}
+
+/*************chrome滚动条样式*************/
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  /* background-color: #f5f5f5; */
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+  border-radius: 10px;
+  background: hsla(0, 0%, 100%, 0.22) !important;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  /* border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); */
+
+  background-color: #e5e5e5 !important;
+  min-height: 50px;
+  border-radius: 5px !important;
+}

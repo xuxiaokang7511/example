@@ -1,0 +1,63 @@
+.wb-exception {
+  display: flex;
+  align-items: center;
+  min-height: 500px;
+  .wb-exception-img {
+    flex: 0 0 60%;
+    width: 60%;
+    padding-right: 122px;
+    zoom: 1;
+    .wb-exception-img-element {
+      float: right;
+      width: 100%;
+      max-width: 430px;
+      height: 360px;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: contain;
+    }
+  }
+  .wb-exception-content {
+    flex: auto;
+    h1 {
+      margin-bottom: 24px;
+      color: #515a6e;
+      font-weight: 600;
+      font-size: 72px;
+      line-height: 72px;
+    }
+    .wb-exception-content-desc {
+      margin-bottom: 16px;
+      color: #808695;
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+}
+/* 常用table
+---------------------------------------------------------------- */
+.wb-table {
+  font-family: Consolas, Menlo, Courier, monospace;
+  font-size: 12px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #e9e9e9;
+  width: 100%;
+  margin-bottom: 24px;
+  td,
+  th {
+    border: 1px solid #e9e9e9;
+    padding: 8px 16px;
+    text-align: left;
+  }
+  th {
+    background: #f7f7f7;
+    white-space: nowrap;
+    color: #5c6b77;
+    font-weight: 600;
+  }
+  td {
+    color: #4b4b4b;
+  }
+}

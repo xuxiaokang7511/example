@@ -1,0 +1,105 @@
+/* 尺寸
+---------------------------------------------------------------- */
+/* 顶部高度 */
+$headerHeight: 64px;
+/* 标签栏高度 */
+$tagsViewHeight: 40px;
+/* 底部高度 */
+$footerHeight: 36px;
+/* 侧边栏宽度 */
+$sideBarWidth: 228px;
+
+/* 基础
+---------------------------------------------------------------- */
+/* 主体部分 */
+$bodyBg: #f5f7f9; // #ecf0f5
+
+/* 菜单
+---------------------------------------------------------------- */
+
+/* 字体颜色 */
+
+//#region 按照 style 分为: dark 和 light
+// 菜单字体颜色
+$darkMenuText: #bfcbd9;
+// 菜单选中字体颜色
+$darkMenuActiveText: #fff;
+// 选择父菜单其下的菜单项时，父菜单字体颜色 // https://github.com/ElemeFE/element/issues/12951
+$darkSuperMenuActiveTex: #fff;
+
+// 菜单字体颜色
+$lightMenuText: #000000de;
+// 菜单选中字体颜色
+$lightMenuActiveText: #2d8cf0;
+// 选择父菜单其下的菜单项时，父菜单字体颜色 // https://github.com/ElemeFE/element/issues/12951
+$lightSuperMenuActiveTex: #000;
+//#endregion
+
+/* 背景 */
+//#region 按照 color 分为: dark,light,color 等等
+$darkBorder: 1px solid #101117;
+// 菜单的背景颜色
+$darkMenuBg: #191a23;
+// 主菜单鼠标移入的背景色
+$darkMenuHover: #0e66c3;
+// 子菜单的背景色
+$darkSubMenuBg: #181922;
+// 子菜单鼠标移入的背景色
+$darkSubMenuHover: #0d65c2;
+
+$lightBorder: 1px solid #f8f8f9;
+// 菜单的背景颜色
+$lightMenuBg: #fff;
+// 主菜单鼠标移入的背景色
+$lightMenuHover: transparentize($lightMenuActiveText, 0.8);
+// 子菜单的背景色
+$lightSubMenuBg: #fefefe;
+// 子菜单鼠标移入的背景色
+$lightSubMenuHover: transparentize($lightMenuActiveText, 0.81);
+
+//#endregion
+
+/* 顶部
+---------------------------------------------------------------- */
+
+// 顶栏背景色
+$darkHeaderBg: #191a23;
+$lightHeaderBg: #ffffff;
+$colorHeaderBg: linear-gradient(90deg, #1d42ab, #2173dc, #1e93ff);
+//  #1d42ab, #2173dc, #1e93ff
+
+// 顶栏字体色
+$darkHeaderText: #f6ca9db3;
+$lightHeaderText: #515a6e;
+$colorHeaderText: #ffffffb3;
+
+// 顶栏导航选中菜单色
+$darkHeaderActiveText: #f6ca9d;
+$lightHeaderActiveText: #2395ff;
+$colorHeaderActiveText: #fff;
+
+// 顶栏面包屑 无连接的颜色
+$darkHeaderSecondText: #bba;
+$lightHeaderSecondText: #97a8be;
+$colorHeaderSecondText: #aa9;
+
+/* 标签栏
+---------------------------------------------------------------- */
+$tagsViewBg: #f5f7f9; // #ecf0f5
+
+// 导出指令 通过 webpack 和 css module 实现
+:export {
+  // topMenu js用到的头部菜单字体色
+  darkHeaderText: $darkHeaderText;
+  lightHeaderText: $lightHeaderText;
+  colorHeaderText: $colorHeaderText;
+
+  // topMenu js用到的头部菜单active字体色
+  darkHeaderActiveText: $darkHeaderActiveText;
+  lightHeaderActiveText: $lightHeaderActiveText;
+  colorHeaderActiveText: $colorHeaderActiveText;
+
+  // sidebar js用到 menuText
+  darkMenuText: $darkMenuText;
+  lightMenuText: $lightMenuText;
+}

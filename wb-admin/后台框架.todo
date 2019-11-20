@@ -1,0 +1,110 @@
+静态资源: 
+  ✔ assets 中的图片统一移到 assets/images @done(19-10-14 11:35)
+  ✔ styles 移到 assets 中 @done(19-10-14 11:56)
+  ✔ icons 移到 assets 中 @done(19-10-14 11:44)
+  ✔ theme 移到 assets 中 @done(19-10-14 11:49)
+  特效:
+    ✔ 页面加载特效 @done(19-09-23 11:06)
+    ✔ 登录登出特效 @done(19-09-23 11:06)
+  样式:
+    ✔ 滚动条样式（ie+chrome） @done(19-09-24 11:41)
+    ✔ content-container 清理 @done(19-09-24 21:42)
+
+JS资源: 
+  ✔ api调整到 store 中 @done(19-10-14 09:29)
+  新增extend（js扩展）:
+    ✔ directive 移到 extend 中 @done(19-10-14 10:51)
+    ✔ filter 移到 extend 中 @done(19-10-14 11:03)
+    ✔ utils 移到 extend 中 @done(19-10-14 11:03)
+    ✔ vendor 移到 extend 中 @done(19-10-14 11:03)
+    ✔ mixin 移到 extend 中 @done(19-10-14 11:03)
+    
+JS兼容性:
+  IE不兼容:
+    ✔ 去掉createjs/tweenjs，手动实现 @done(19-10-01 17:19)
+  ✔ resize+debounce @done(19-10-18 10:55)
+
+多余文件的清理:
+  ✔ 合并上周公司未提交的代码 @done(19-09-23 09:05)
+  ✔ 清除三层（及以上）嵌套路由 @done(19-09-23 15:06)
+  ✔ 整理基础和动态路由的扩展属性 @done(19-09-23 15:06)
+
+路由:
+  父路由:
+    ✔ 删除父路由的name属性 @done(19-09-30 11:47)
+  正则路由页面:
+  例如文章编辑，根据id路由地址
+    ✔ 设置tagsView和页面标题，设置了共用方法 @done(19-09-23 14:46)
+
+组件:
+  ✔ 返回顶部组件 @done(19-09-28 18:02)
+  图片view组件:
+    ✔ 基础实现 @done(19-10-16 16:52)
+    ✔ 图片浏览禁止右键 @done(19-10-16 16:51)
+  内容组件:
+    ✔ 页面内容的标题：左侧带竖线的那种 @done(19-09-23 17:51)
+    ✔ 主体部分 @done(19-09-24 11:41)
+    ✔ 完成内容组件 @done(19-09-24 11:41)
+  ✔ 图片裁剪组件 @done(19-10-16 16:51)
+  ✔ 头部描述组件 - https://adminpro.iviewui.com/list/basic-list , https://adminpro.iviewui.com/profile/advanced @done(19-10-18 14:50)
+  ✔ 自定义loading，仿iView效果 @done(19-10-18 15:31)
+  ✔ List 列表 - iView @done(19-10-18 17:17)
+  ✔ Cell 单元格 - iView @done(19-10-21 09:01)
+  ✔ Anchor 锚点 - iView @done(19-10-21 15:54)
+  ✔ Affix 图钉 - iView @done(19-10-21 15:54)
+  ✔ Time 相对时间 @done(19-10-21 16:31)
+  ✔ Backtop 组件 用回系统的 @done(19-10-23 11:11)
+
+其他组件:
+  ✘ 组织结构树 - https://github.com/lison16/v-org-tree , https://admin.iviewui.com/components/org_tree_page @cancelled(19-10-23 16:21)
+
+布局+主题:
+  菜单数据（侧边栏之类）:
+    ✔ 有子菜单的清空page属性 @done(19-09-24 21:25)
+    ✔ 没有子菜单也没有page属性的需要过滤掉 @done(19-09-24 21:25)
+    ✔ 将sidebar 中 清理 menus 和 menuObj 的逻辑 移到 store/moudules/menu.js 中去 @done(19-10-01 16:00)
+    ✔ 将store/moudules/user.js中的 menus、menuObj、currentMenu 属性 移到 store/moudules/menu.js 中去 @done(19-10-01 16:00)
+    ✔ 将sidebar/SidebarItem 中父子逻辑的实现 转到 store/moudules/menu.js 中 @done(19-10-01 16:02)
+    ✔ n层子菜单，始终只有一个最终子菜单 @done(19-10-01 15:01)
+    ✔ name,menu name 和 route name 不同时 按照menu的属性优先 @done(19-10-01 15:25)
+    ✔ menu id 问题 @done(19-10-01 15:57)
+    ✔ 侧边栏菜单组件上自己实现，过滤层级压缩 @done(19-10-01 21:41)
+    ✘ 菜单对应的面包屑层级路径问题-------暂时解决不了 @cancelled(19-10-23 16:21)
+
+  顶部菜单-模仿iview:
+    ✔ 顶部菜单开启设置：开启顶部菜单就取消面包屑 @done(19-09-25 17:44)
+    ✔ 顶部菜单的数据结构 @done(19-09-25 17:44)
+    ✔ 顶部菜单的组件 @done(19-09-25 17:44)
+    ✔ 顶部菜单中只有一个页面，就考虑隐藏侧边栏 @done(19-09-26 16:55)
+    ✔ 侧边栏的配套 @done(19-09-26 15:58)
+    ✔ 侧边栏考虑下只用阴影不用border @done(19-09-26 15:58)
+  面包屑:
+    ✔ 面包屑图标 @done(19-10-17 15:54)
+  tagsView优化-模仿iview:
+    标签bug:
+      ✘ visitedViews中视图的path会丢失的问题，规律不明----暂时没发现 @cancelled(19-10-23 14:39)
+      ✔ 占位换取宽度不变 @done(19-09-29 08:55)
+    ✔ 历史浏览，关闭时取历史的最后一条 @done(19-10-04 14:54)
+    ✔ 关闭左测 @done(19-10-16 15:46)
+    ✔ 关闭右测 @done(19-10-16 15:46)
+    ✔ 标签的右键菜单 @done(19-10-16 15:47)
+    ✔ 关闭后返回最后一次的tag @done(19-10-16 15:47)
+    ✔ 标签拖动调整位置 @done(19-10-23 16:16)
+    清理tagsView数据:
+      在路由处理完成后
+      ✔ 不存在路由的cachedViews @done(19-09-28 15:35)
+      ✔ 不存在路由的visitedViews @done(19-09-28 15:35)
+      ✔ 检查并更新visitedViews中路由meta中的title和icon @done(19-09-28 15:35)
+    ✔ 样式：背景和item @done(19-09-26 15:58)
+    ✔ ie下由滚动条引起的样式问题 @done(19-09-27 11:52)
+    ✔ 左右滑动按钮 @done(19-09-28 13:49)
+    ✔ 最后操作按钮 @done(19-09-27 18:02)
+  main布局:
+    ✔ 布局还是不对，不固定底部要在不固定头部的是否才起效 @done(19-09-26 16:54)
+    ✔ 解决滚动条被覆盖的问题（app-main的顶部padding造成，将顶部padding放到上层容器中去） @done(19-09-27 11:26)
+    ✔ tagsView放到app-main中 @done(19-09-27 11:24)
+    ✔ 头部通栏设置：在固定顶部的情况下,left,z-index,width @done(19-09-27 13:16)
+  主题的重新实现:
+    ✔ 头部样式 @done(19-09-27 21:04)
+    ✔ 侧边栏样式 @done(19-09-27 21:04)
+    ✔ element-ui 样式 @done(19-09-28 12:20)

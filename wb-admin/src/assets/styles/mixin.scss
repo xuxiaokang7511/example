@@ -1,0 +1,224 @@
+/* 基础
+---------------------------------------------------------------- */
+
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin test {
+  background-color: red;
+}
+
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+@mixin relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin pct($pct) {
+  width: #{$pct};
+  position: relative;
+  margin: 0 auto;
+}
+
+@mixin triangle($width, $height, $color, $direction) {
+  $width: $width/2;
+  $color-border-style: $height solid $color;
+  $transparent-border-style: $width solid transparent;
+  height: 0;
+  width: 0;
+
+  @if $direction==up {
+    border-bottom: $color-border-style;
+    border-left: $transparent-border-style;
+    border-right: $transparent-border-style;
+  } @else if $direction==right {
+    border-left: $color-border-style;
+    border-top: $transparent-border-style;
+    border-bottom: $transparent-border-style;
+  } @else if $direction==down {
+    border-top: $color-border-style;
+    border-left: $transparent-border-style;
+    border-right: $transparent-border-style;
+  } @else if $direction==left {
+    border-right: $color-border-style;
+    border-top: $transparent-border-style;
+    border-bottom: $transparent-border-style;
+  }
+}
+
+/* theme
+---------------------------------------------------------------- */
+// 选择父菜单其下的菜单项时，父菜单字体颜色
+@mixin superMenuActiveText() {
+  color: $darkSuperMenuActiveTex !important;
+  font-weight: bold;
+  [data-style='dark'] & {
+    color: $darkSuperMenuActiveTex !important;
+    font-weight: bold;
+  }
+  [data-style='light'] & {
+    color: $lightSuperMenuActiveTex !important;
+    font-weight: bold;
+  }
+}
+// 菜单选中的字体颜色
+@mixin menuActiveText() {
+  color: $darkMenuActiveText !important;
+  [data-style='dark'] & {
+    color: $darkMenuActiveText !important;
+    background-color: darken($darkMenuHover, 20%) !important;
+    border-right: 2px solid lighten($darkMenuHover, 30%) !important;
+  }
+  [data-style='light'] & {
+    color: $lightMenuActiveText !important;
+    border-right: 2px solid $lightMenuActiveText !important;
+    background-color: transparentize($lightMenuActiveText, 0.85) !important;
+  }
+}
+// 菜单的背景颜色
+@mixin menuBg() {
+  background-color: $darkMenuBg !important;
+  [data-style='dark'] & {
+    background-color: $darkMenuBg !important;
+  }
+  [data-style='light'] & {
+    background-color: $lightMenuBg !important;
+  }
+}
+
+// 菜单的border
+@mixin menuBorderTop() {
+  border-top: $darkBorder;
+  [data-style='dark'] & {
+    border-top: $darkBorder;
+  }
+  [data-style='light'] & {
+    border-top: $lightBorder;
+  }
+}
+// 子菜单的背景色
+@mixin subMenuBg() {
+  background-color: $darkSubMenuBg !important;
+  [data-style='dark'] & {
+    background-color: $darkSubMenuBg !important;
+  }
+  [data-style='light'] & {
+    background-color: $lightSubMenuBg !important;
+  }
+}
+// 主菜单鼠标移入的背景色
+@mixin menuHover() {
+  background-color: $darkMenuHover !important;
+  [data-style='dark'] & {
+    background-color: $darkMenuHover !important;
+  }
+  [data-style='light'] & {
+    background-color: $lightMenuHover !important;
+  }
+}
+// 子菜单鼠标移入的背景色
+@mixin subMenuHover() {
+  background-color: $darkSubMenuHover !important;
+  [data-style='dark'] & {
+    background-color: $darkSubMenuHover !important;
+  }
+  [data-style='light'] & {
+    background-color: $lightSubMenuHover !important;
+  }
+}
+
+// 侧边栏logo的字体色背景色
+@mixin sidebarLogoBgFont() {
+  background-color: $lightMenuBg !important;
+  color: $lightMenuText !important;
+  [data-style='dark'] & {
+    background-color: $darkMenuBg !important;
+    color: $darkMenuText !important;
+  }
+  [data-style='light'] & {
+    background-color: $lightMenuBg !important;
+    color: $lightMenuText !important;
+  }
+}
+
+/* 顶部 */
+
+// 顶栏背景色
+@mixin headerBg() {
+  background-attachment: $darkHeaderBg !important;
+  [data-color='dark'] & {
+    background: $darkHeaderBg !important;
+  }
+  [data-color='light'] & {
+    background: $lightHeaderBg !important;
+  }
+  [data-color='color'] & {
+    background: $colorHeaderBg !important;
+  }
+}
+
+// 顶栏字体色
+@mixin headerText() {
+  color: $darkHeaderText !important;
+  [data-color='dark'] & {
+    color: $darkHeaderText !important;
+  }
+  [data-color='light'] & {
+    color: $lightHeaderText !important;
+  }
+  [data-color='color'] & {
+    color: $colorHeaderText !important;
+  }
+}
+
+// 顶栏active字体色
+@mixin headerActiveColor() {
+  border-bottom-color: $darkHeaderActiveText !important;
+  color: $darkHeaderActiveText !important;
+  [data-color='dark'] & {
+    border-bottom-color: $darkHeaderActiveText !important;
+    color: $darkHeaderActiveText !important;
+  }
+  [data-color='light'] & {
+    border-bottom-color: $lightHeaderActiveText !important;
+    color: $lightHeaderActiveText !important;
+  }
+  [data-color='color'] & {
+    border-bottom-color: $colorHeaderActiveText !important;
+    color: $colorHeaderActiveText !important;
+  }
+}
+
+// 顶栏面包屑 无连接的颜色
+@mixin headerSecondText() {
+  color: $darkHeaderSecondText !important;
+  [data-color='dark'] & {
+    color: $darkHeaderSecondText !important;
+  }
+  [data-color='light'] & {
+    color: $lightHeaderSecondText !important;
+  }
+  [data-color='color'] & {
+    color: $colorHeaderSecondText !important;
+  }
+}
